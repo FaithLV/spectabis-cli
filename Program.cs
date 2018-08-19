@@ -1,4 +1,5 @@
 ﻿using System;
+using spectabis_cmd.Models;
 
 namespace spectabis_cmd
 {
@@ -6,6 +7,7 @@ namespace spectabis_cmd
     {
         static void Main(string[] args)
         {
+            System.Console.WriteLine($"spectabis-cmd {AssemblyVersion.Get()}");
             Console.WriteLine("Hello World!");
         }
     }
