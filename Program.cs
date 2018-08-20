@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Newtonsoft.Json;
 using spectabis_cmd.Models;
 
 namespace spectabis_cmd
@@ -28,7 +29,7 @@ namespace spectabis_cmd
                 ConsoleCommand command = CommandTable[commandArg];
                 command.CommandDelegate(arguments);
             }
-            catch
+            catch(KeyNotFoundException)
             {
                 System.Console.WriteLine($"Unknown command = '{commandArg}'");
                 Help();
@@ -52,7 +53,7 @@ namespace spectabis_cmd
         //Create game profile
         static void Create(string[] args)
         {
-            SmartParse.CreateGameProfile(args);
+            ProfileManager.CreateProfile(args);
         }
 
         static void Edit(string[] args)

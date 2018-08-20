@@ -1,11 +1,10 @@
 using System.IO;
-using Newtonsoft.Json;
 
 namespace spectabis_cmd.Models
 {
     public static class SmartParse
     {
-        public static void CreateGameProfile(string[] args)
+        public static GameProfile CreateGameProfile(string[] args)
         {
             bool isFilePath = File.Exists(args[0]);
             GameProfile profile = null;
@@ -24,7 +23,7 @@ namespace spectabis_cmd.Models
                 profile = new GameProfile() { ProfileName = args[0] };
             }
 
-            string profileJson = JsonConvert.SerializeObject(profile);
+            return profile;
         }
     }
 }
