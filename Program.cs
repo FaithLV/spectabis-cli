@@ -22,6 +22,7 @@ namespace spectabis_cmd
             if(args.Length < 1)
             {
                 Help();
+                return;
             }
 
             //Strip command argument from args
