@@ -8,8 +8,6 @@ namespace spectabis_cmd
 {
     class Program
     {
-
-
         private static readonly Dictionary<string, ConsoleCommand> CommandTable = new Dictionary<string, ConsoleCommand>()
         {
             {"version", new ConsoleCommand(Version, "Show program version")},
@@ -54,7 +52,7 @@ namespace spectabis_cmd
         //Create game profile
         static void Create(string[] args)
         {
-  
+            SmartParse.CreateGameProfile(args);
         }
 
         static void Edit(string[] args)
