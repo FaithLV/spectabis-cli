@@ -18,6 +18,7 @@ namespace spectabis_cmd
             {"help", new ConsoleCommand(Help, "Show help message")},
             {"create", new ConsoleCommand(Create, "Create a new game profile", "create < path / name > [optional]<name>")},
             {"profiles", new ConsoleCommand(Profiles, "Show all game profiles or single by ID or exact name", "profiles [optional]<ID/Title>")},
+            {"config", new ConsoleCommand(Configure, "Set or Get Spectabis global configuration settings", "configure [get/set] <Setting> <value>")},
             { "exit", new ConsoleCommand(Exit, "Exit spectabis interactive shell")}
         };
 
@@ -66,7 +67,7 @@ namespace spectabis_cmd
                 System.Console.ForegroundColor = ConsoleColor.White;
 
                 string[] args = System.Console.ReadLine().ParseAsArguments().ToArray();
-                
+
                 Console.WriteLine(String.Empty);
 
                 string commandArg = args[0].ToLower();
@@ -81,8 +82,6 @@ namespace spectabis_cmd
                 {
                     System.Console.WriteLine($" spectabis: '{commandArg}' command not found");
                 }
-
-
             }
         }
 
@@ -122,7 +121,7 @@ namespace spectabis_cmd
 
         static void Edit(string[] args)
         {
-
+            
         }
 
         static void Profiles(string[] args = null)
@@ -140,6 +139,16 @@ namespace spectabis_cmd
         static void Delete(string[] args)
         {
 
+        }
+
+        static void Launch(string[] args)
+        {
+            
+        }
+
+        static void Configure(string[] args)
+        {
+            SmartParse.Configuration(args);
         }
 
         static void Exit(string[] args = null)

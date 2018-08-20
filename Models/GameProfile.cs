@@ -10,6 +10,7 @@ namespace spectabis_cmd.Models
         public string GamePath {get; set;}
         public string GameSerial {get; set;}
         public string ImagePath{get; set;}
+        public string CustomExecutablePath {get; set;}
         public GameProfile()
         {
 

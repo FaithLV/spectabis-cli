@@ -66,5 +66,15 @@ namespace spectabis_cmd.Models
 
             table.Write();
         }
+
+        public static void PrintAllConfiguration()
+        {
+            var config = ConfigurationManager.GetAllConfiguration();
+
+            foreach(var prop in config)
+            {
+                System.Console.WriteLine("      {0,10} = {1,10}", prop.Key, prop.Value);
+            }
+        }
     }
 }

@@ -89,5 +89,54 @@ namespace spectabis_cmd.Models
 
             HelpPrettyPrints.PrintGameProfile(profile);
         }
+
+        public static void Configuration(string[] args)
+        {
+            if(args[0] == null || args.Length < 1)
+            {
+                System.Console.WriteLine("  spectabis: must specify get/set action");
+            }
+            else if(args[0].ToLower() == "set")
+            {
+                ConfigurationManager.Set(args[1], args[2]);
+                System.Console.WriteLine($"  spectabis: {args[1]} = {args[2]}");
+            }
+            else if(args[0].ToLower() == "get" )
+            {
+                if(args.Length < 2)
+                {
+                    System.Console.WriteLine("  spectabis: must specify (case-sensitive) property name");
+                    return;
+                }
+
+                string value = ConfigurationManager.Get(args[1]);
+
+                if(args[1] == "*")
+                {
+                    HelpPrettyPrints.PrintAllConfiguration();
+                    return;
+                }
+                else if(args[1] == null || value == null)
+                {
+                    System.Console.WriteLine("  spectabis: must specify proper property name (case-sensitive)");
+                    return;
+                }
+                
+                System.Console.WriteLine("  {0,10} = {1, 10}", args[1], value);
+            }
+            else
+            {
+                System.Console.WriteLine($"  spectabis: no such action {args[0]}");
+            }
+        }
+
+        private static void PrintConfiguration(string setting)
+        {
+            if(setting == null)
+            {
+                System.Console.WriteLine("  spectabis: must specify setting");
+                return;
+            }
+        }
     }
 }
