@@ -93,7 +93,6 @@ namespace spectabis_cmd
         //Help command without extra arguments
         static void Help(string[] args = null)
         {
-            HelpPrettyPrints.PrintASCIILogo();
             HelpPrettyPrints.PrintCommandTable(CommandTable);
         }
 

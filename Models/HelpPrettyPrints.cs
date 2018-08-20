@@ -7,19 +7,6 @@ namespace spectabis_cmd.Models
 {
     public static class HelpPrettyPrints
     {
-        public static void PrintASCIILogo()
-        {
-            string art = 
-            @"
-                ╔═╗╔═╗╔═╗╔═╗╔╦╗╔═╗╔╗ ╦╔═╗
-                ╚═╗╠═╝║╣ ║   ║ ╠═╣╠╩╗║╚═╗
-                ╚═╝╩  ╚═╝╚═╝ ╩ ╩ ╩╚═╝╩╚═╝
-            ";
-
-            Console.WriteLine(art);
-
-        }
-
         public static void PrintCommandTable(Dictionary<string, ConsoleCommand> cmdTable)
         {
             ConsoleTable table = new ConsoleTable("Command", "Description", "Usage");
