@@ -16,8 +16,8 @@ namespace spectabis_cmd
         {
             {"version", new ConsoleCommand(Version, "Show program version")},
             {"help", new ConsoleCommand(Help, "Show help message")},
-            {"create", new ConsoleCommand(Create, "Create a new game profile", "create < path / name > <[optional] name>")},
-            {"profiles", new ConsoleCommand(Profiles, "Show all game profiles")},
+            {"create", new ConsoleCommand(Create, "Create a new game profile", "create < path / name > [optional]<name>")},
+            {"profiles", new ConsoleCommand(Profiles, "Show all game profiles or single by ID or exact name", "profiles [optional]<ID/Title>")},
             { "exit", new ConsoleCommand(Exit, "Exit spectabis interactive shell")}
         };
 
@@ -125,9 +125,13 @@ namespace spectabis_cmd
 
         static void Profiles(string[] args = null)
         {
-            if(args.Length < 1)
+            if (args.Length < 1)
             {
                 HelpPrettyPrints.PrintGameProfiles(ProfileManager.GetAllProfiles());
+            }
+            else
+            {
+                SmartParse.PrintProfile(args);
             }
         }
 

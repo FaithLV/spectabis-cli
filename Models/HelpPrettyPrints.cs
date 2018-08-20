@@ -23,6 +23,22 @@ namespace spectabis_cmd.Models
             table.Write();
         }
 
+        public static void PrintGameProfile(GameProfile profile)
+        {
+            PropertyInfo[] _props = typeof(GameProfile).GetProperties();
+            string[] properties = _props.Select( x => x.Name.ToString()).ToArray(); 
+
+            foreach(PropertyDescriptor prop in TypeDescriptor.GetProperties(profile))
+                {
+                    Type t = profile.GetType();
+                    PropertyInfo p = t.GetProperty(prop.Name);
+                    string value = (string)p.GetValue(profile, null);
+
+                    System.Console.WriteLine("      {0, 12} | {1,12}", prop.Name, value);
+                }
+            
+        }
+
         public static void PrintGameProfiles(List<GameProfile> profiles)
         {
             //Get all GameProfile public properties and set as table header
@@ -41,9 +57,6 @@ namespace spectabis_cmd.Models
                     Type t = profiles[0].GetType();
                     PropertyInfo p = t.GetProperty(prop.Name);
                     string value = (string)p.GetValue(profiles[i], null);
-
-                    /* System.Console.WriteLine($"{prop.Name} | {profiles[0].ProfileName} {profiles[0].GamePath} {profiles[0].GameSerial}");
-                    object obj = prop.GetType().GetProperty(prop.Name).GetValue(profiles[0].GetType(), null); */
 
                     tableBuffer.Add(value);
                 }
