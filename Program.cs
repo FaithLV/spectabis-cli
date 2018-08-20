@@ -14,6 +14,7 @@ namespace spectabis_cmd
             {"version", new ConsoleCommand(Version, "Show program version")},
             {"help", new ConsoleCommand(Help, "Show help message")},
             {"create", new ConsoleCommand(Create, "Create a new game profile", "dotnet create < path / name > <[optional] name>")},
+            { "exit", new ConsoleCommand(Exit, "Exit spectabis command line tool")}
 
         };
 
@@ -21,10 +22,16 @@ namespace spectabis_cmd
         {
             if(args.Length < 1)
             {
-                Help();
-                return;
+                LaunchInteractive();
             }
+            else
+            {
+                ExecuteCommandArgument(args);
+            }
+        }
 
+        static void ExecuteCommandArgument(string[] args)
+        {
             //Strip command argument from args
             string commandArg = args[0].ToLower();
             string[] arguments = args.Where(x => x != args[0]).ToArray();
@@ -43,7 +50,31 @@ namespace spectabis_cmd
                 Console.ForegroundColor = ConsoleColor.White;
                 Help();
             }
-            
+        }
+
+        static void LaunchInteractive()
+        {
+            while(true)
+            {
+                System.Console.ForegroundColor = ConsoleColor.Gray;
+                System.Console.Write("spectabis > ");
+                System.Console.ForegroundColor = ConsoleColor.White;
+
+                string args = System.Console.ReadLine().ToLower();
+                string commandArg = args;
+
+                try
+                {
+                    ConsoleCommand command = CommandTable[commandArg];
+                    command.CommandDelegate(null);
+                }
+                catch(KeyNotFoundException)
+                {
+                    System.Console.WriteLine($"spectabis: '{commandArg}' command not found");
+                }
+                
+
+            }
         }
 
         //Return build version
@@ -60,8 +91,14 @@ namespace spectabis_cmd
         }
 
         //Create game profile
-        static void Create(string[] args)
+        static void Create(string[] args = null)
         {
+            if(args == null)
+            {
+                System.Console.WriteLine("spectabis: missing profile name or game path");
+                return;
+            }
+
             ProfileManager.CreateProfile(args);
         }
 
@@ -70,9 +107,19 @@ namespace spectabis_cmd
 
         }
 
+        static void Profiles(string[] args)
+        {
+
+        }
+
         static void Delete(string[] args)
         {
 
+        }
+
+        static void Exit(string[] args = null)
+        {
+            Environment.Exit(-1);
         }
     }
 }
