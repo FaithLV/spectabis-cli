@@ -19,6 +19,11 @@ namespace spectabis_cmd
 
         static void Main(string[] args)
         {
+            if(args.Length < 1)
+            {
+                Help();
+            }
+
             //Strip command argument from args
             string commandArg = args[0].ToLower();
             string[] arguments = args.Where(x => x != args[0]).ToArray();
@@ -31,7 +36,10 @@ namespace spectabis_cmd
             }
             catch(KeyNotFoundException)
             {
-                System.Console.WriteLine($"Unknown command = '{commandArg}'");
+                Console.ForegroundColor = ConsoleColor.Red;
+                System.Console.WriteLine();
+                System.Console.WriteLine($"		Unknown command '{commandArg}'!");
+                Console.ForegroundColor = ConsoleColor.White;
                 Help();
             }
             
