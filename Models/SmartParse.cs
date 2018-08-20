@@ -57,6 +57,7 @@ namespace spectabis_cmd.Models
                 profile = new GameProfile() { ProfileName = args[0] };
             }
 
+            profile.ProfileID = profile.GenerateHash();
             return profile;
         }
     }
