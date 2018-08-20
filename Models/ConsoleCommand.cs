@@ -9,7 +9,6 @@ namespace spectabis_cmd.Models
             CommandDelegate = commandDelegate;
             Description = description;
         }
-
         public Action<string[]> CommandDelegate {get; set;}
         public string Description {get; set;}
     }

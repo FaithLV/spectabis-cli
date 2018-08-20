@@ -27,7 +27,7 @@ namespace spectabis_cmd.Models
             Console.Write("{0, 12}", "      |       ");
 
             Console.ForegroundColor = ConsoleColor.Gray;
-            Console.Write("{0, 12}", description);
+            Console.WriteLine("{0, 12}", description);
 
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using spectabis_cmd.Models;
 
@@ -12,7 +13,8 @@ namespace spectabis_cmd
         private static readonly Dictionary<string, ConsoleCommand> CommandTable = new Dictionary<string, ConsoleCommand>()
         {
             {"version", new ConsoleCommand(Version, "Show program version")},
-            {"help", new ConsoleCommand(Version, "Show help message")},
+            {"help", new ConsoleCommand(Help, "Show help message")},
+            {"create", new ConsoleCommand(Create, "Create a new game profile, pass game path or name as argument")},
 
         };
 
@@ -48,16 +50,18 @@ namespace spectabis_cmd
             HelpPrettyPrints.PrintASCIILogo();
             System.Console.WriteLine("======== spectabis-cmd command line ========");
 
-            System.Console.WriteLine("{0, 12} | {1, 12}", "help", "");
+            foreach(KeyValuePair<string, ConsoleCommand> cmd in CommandTable)
+            {
+                HelpPrettyPrints.PrintCommand(cmd.Key, cmd.Value.Description);
+            }
+            
         }
 
         //Create game profile
         static void Create(string[] args)
         {
-            GameProfile game = new GameProfile()
-            {
-                GamePath = args[0]
-            };
+            //FileAttributes
+            //bool isFilePath = Path.E
         }
 
         static void Edit(string[] args)
