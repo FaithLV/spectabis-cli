@@ -6,7 +6,7 @@ namespace spectabis_cmd.Models
     public class GameProfile
     {
         public string ProfileID {get; set;}
-        public string ProfileName {get; set;}
+        public string ProfileName {get; set;} = "N/A";
         public string GamePath {get; set;}
         public string GameSerial {get; set;}
         public string ImagePath{get; set;}

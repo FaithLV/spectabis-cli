@@ -66,6 +66,8 @@ namespace spectabis_cmd
                 System.Console.ForegroundColor = ConsoleColor.White;
 
                 string[] args = System.Console.ReadLine().ParseAsArguments().ToArray();
+                
+                Console.WriteLine(String.Empty);
 
                 string commandArg = args[0].ToLower();
                 string[] arguments = args.Where(x => x != args[0]).ToArray();
