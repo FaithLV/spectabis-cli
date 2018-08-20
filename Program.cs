@@ -14,7 +14,7 @@ namespace spectabis_cmd
         {
             {"version", new ConsoleCommand(Version, "Show program version")},
             {"help", new ConsoleCommand(Help, "Show help message")},
-            {"create", new ConsoleCommand(Create, "Create a new game profile, pass game path or name as argument")},
+            {"create", new ConsoleCommand(Create, "Create a new game profile", "dotnet create < path / name > <[optional] name>")},
 
         };
 
@@ -48,20 +48,13 @@ namespace spectabis_cmd
         static void Help(string[] args = null)
         {
             HelpPrettyPrints.PrintASCIILogo();
-            System.Console.WriteLine("======== spectabis-cmd command line ========");
-
-            foreach(KeyValuePair<string, ConsoleCommand> cmd in CommandTable)
-            {
-                HelpPrettyPrints.PrintCommand(cmd.Key, cmd.Value.Description);
-            }
-            
+            HelpPrettyPrints.PrintCommandTable(CommandTable);
         }
 
         //Create game profile
         static void Create(string[] args)
         {
-            //FileAttributes
-            //bool isFilePath = Path.E
+  
         }
 
         static void Edit(string[] args)

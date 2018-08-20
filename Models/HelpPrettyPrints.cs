@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using ConsoleTables;
 using static System.Console;
 
 namespace spectabis_cmd.Models
@@ -18,17 +20,17 @@ namespace spectabis_cmd.Models
 
         }
 
-        public static void PrintCommand(string command, string description)
+        public static void PrintCommandTable(Dictionary<string, ConsoleCommand> cmdTable)
         {
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.Write("{0, 12}", command);
+            ConsoleTable table = new ConsoleTable("Command", "Description", "Usage");
 
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write("{0, 12}", "      |       ");
+            foreach(KeyValuePair<string, ConsoleCommand> cmd in cmdTable)
+            {
+                ConsoleCommand command = cmd.Value;
+                table.AddRow(cmd.Key, command.Description, command.Usage);
+            }
 
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine("{0, 12}", description);
-
+            table.Write();
         }
     }
 }
