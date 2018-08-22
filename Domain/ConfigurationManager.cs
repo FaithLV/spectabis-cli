@@ -3,8 +3,9 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Newtonsoft.Json;
+using spectabis_cmd.Model;
 
-namespace spectabis_cmd.Models
+namespace spectabis_cmd.Domain
 {
     public static class ConfigurationManager
     {

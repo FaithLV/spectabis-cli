@@ -1,6 +1,6 @@
 using System.Reflection;
 
-namespace spectabis_cmd.Models
+namespace spectabis_cmd.Domain
 {
     public static class AssemblyVersion
     {

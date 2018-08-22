@@ -1,7 +1,8 @@
 using System;
 using System.Text;
+using spectabis_cmd.Domain;
 
-namespace spectabis_cmd.Models
+namespace spectabis_cmd.Model
 {
     public class GameProfile
     {
@@ -19,7 +20,7 @@ namespace spectabis_cmd.Models
         public string GenerateHash()
         {
             string hash = string.Empty;
-            var Hasher = new Crc32();
+            var Hasher = new CRC32();
             
             byte[] dataBuffer = Encoding.UTF8.GetBytes($"{ProfileName}{GamePath}{GameSerial}{DateTime.Now}"); 
             string hashBuffer = Hasher.Get(dataBuffer).ToString("X2");

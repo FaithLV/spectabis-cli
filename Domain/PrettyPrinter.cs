@@ -4,11 +4,11 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using ConsoleTables;
-using static System.Console;
+using spectabis_cmd.Model;
 
-namespace spectabis_cmd.Models
+namespace spectabis_cmd.Domain
 {
-    public static class HelpPrettyPrints
+    public static class PrettyPrinter
     {
         public static void PrintCommandTable(Dictionary<string, ConsoleCommand> cmdTable)
         {

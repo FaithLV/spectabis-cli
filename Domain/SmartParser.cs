@@ -2,10 +2,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using spectabis_cmd.Model;
 
-namespace spectabis_cmd.Models
+namespace spectabis_cmd.Domain
 {
-    public static class SmartParse
+    public static class SmartParser
     {
         public static IEnumerable<string> ParseAsArguments(this string commandLine)
         {
@@ -87,7 +88,7 @@ namespace spectabis_cmd.Models
                 profile = profiles.SingleOrDefault(x => x.ProfileName.ToLower() == arg.ToLower());
             }
 
-            HelpPrettyPrints.PrintGameProfile(profile);
+            PrettyPrinter.PrintGameProfile(profile);
         }
 
         public static void Configuration(string[] args)
@@ -113,7 +114,7 @@ namespace spectabis_cmd.Models
 
                 if(args[1] == "*")
                 {
-                    HelpPrettyPrints.PrintAllConfiguration();
+                    PrettyPrinter.PrintAllConfiguration();
                     return;
                 }
                 else if(args[1] == null || value == null)

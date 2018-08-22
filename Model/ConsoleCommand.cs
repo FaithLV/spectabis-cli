@@ -1,6 +1,6 @@
 using System;
 
-namespace spectabis_cmd.Models
+namespace spectabis_cmd.Model
 {
     public class ConsoleCommand
     {

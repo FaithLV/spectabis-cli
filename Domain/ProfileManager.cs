@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
+using spectabis_cmd.Model;
 
-namespace spectabis_cmd.Models
+namespace spectabis_cmd.Domain
 {
     public static class ProfileManager
     {
@@ -12,7 +13,7 @@ namespace spectabis_cmd.Models
         {
             List<GameProfile> allProfiles = GetAllProfiles();
 
-            GameProfile game = SmartParse.CreateGameProfile(args);
+            GameProfile game = SmartParser.CreateGameProfile(args);
             allProfiles.Add(game);
 
             WriteAllProfiles(allProfiles);
