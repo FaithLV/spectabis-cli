@@ -44,10 +44,12 @@ namespace spectabis_cmd.Models
         {
             Dictionary<string, string> dict = new Dictionary<string, string>();
             PropertyInfo[] _props = typeof(ConfigrationModel).GetProperties();
+            ConfigrationModel config = GetConfig();
 
             foreach(PropertyInfo prop in _props)
             {
-                dict.Add(prop.Name, prop.GetValue(prop.Name).ToString());
+                var x = typeof(ConfigrationModel).GetProperty(prop.Name).GetValue(config);
+                dict.Add(prop.Name, x.ToString());
             }
             
             return dict;

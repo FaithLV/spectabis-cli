@@ -92,7 +92,7 @@ namespace spectabis_cmd.Models
 
         public static void Configuration(string[] args)
         {
-            if(args[0] == null || args.Length < 1)
+            if(args.Length < 1 || args[0] == null)
             {
                 System.Console.WriteLine("  spectabis: must specify get/set action");
             }
