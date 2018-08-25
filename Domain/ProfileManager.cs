@@ -39,14 +39,7 @@ namespace spectabis_cmd.Domain
 
         public static List<GameProfile> GetAllProfiles()
         {
-            if(File.Exists(PathManager.ProfileCache))
-            {
-                return JsonConvert.DeserializeObject<List<GameProfile>>(File.ReadAllText(PathManager.ProfileCache));
-            }
-            else
-            {
-                return new List<GameProfile>();
-            }
+            return File.Exists(PathManager.ProfileCache) ? JsonConvert.DeserializeObject<List<GameProfile>>(File.ReadAllText(PathManager.ProfileCache)) : new List<GameProfile>();
         }
     }
 }

@@ -14,12 +14,12 @@ namespace spectabis_cmd.Domain
             ConfigrationModel config = GetConfig();
             typeof(ConfigrationModel).GetProperty(setting).SetValue(config, newValue);
 
-            if(File.Exists(PathManager.ConfigrationPath))
+            if(File.Exists(PathManager.ConfigurationPath))
             {
-                File.Delete(PathManager.ConfigrationPath);
+                File.Delete(PathManager.ConfigurationPath);
             }
 
-            using(StreamWriter writer = File.CreateText(PathManager.ConfigrationPath))
+            using(StreamWriter writer = File.CreateText(PathManager.ConfigurationPath))
             {
                 JsonSerializer serial = new JsonSerializer();
                 serial.Formatting = Formatting.Indented;
@@ -58,12 +58,7 @@ namespace spectabis_cmd.Domain
 
         private static ConfigrationModel GetConfig()
         {
-            if(File.Exists(PathManager.ConfigrationPath))
-            {
-                return JsonConvert.DeserializeObject<ConfigrationModel>(File.ReadAllText(PathManager.ConfigrationPath));
-            }
-
-            return new ConfigrationModel();
+            return File.Exists(PathManager.ConfigurationPath) ? JsonConvert.DeserializeObject<ConfigrationModel>(File.ReadAllText(PathManager.ConfigurationPath)) : new ConfigrationModel();
         }
     }
 
