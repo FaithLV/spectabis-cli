@@ -99,8 +99,14 @@ namespace spectabis_cmd.Domain
             else switch (args[0].ToLower())
             {
                 case "set":
-                    ConfigurationManager.Set(args[1], args[2]);
-                    System.Console.WriteLine($"  spectabis: {args[1]} = {args[2]}");
+                    if(ConfigurationManager.Set(args[1], args[2]))
+                    {
+                        System.Console.WriteLine($"  spectabis: {args[1]} = {args[2]}");
+                    }
+                    else
+                    {
+                        System.Console.WriteLine("configuration key not found (hint: they are case sensitive)");    
+                    }
                     break;
                 case "get" when args.Length < 2:
                     System.Console.WriteLine("  spectabis: must specify (case-sensitive) property name");

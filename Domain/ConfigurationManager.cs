@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,10 +10,19 @@ namespace spectabis_cmd.Domain
 {
     public static class ConfigurationManager
     {
-        public static void Set<T> (string setting, T newValue)
+        public static bool Set<T> (string setting, T newValue)
         {
             ConfigrationModel config = GetConfig();
-            typeof(ConfigrationModel).GetProperty(setting).SetValue(config, newValue);
+
+            try
+            {
+                typeof(ConfigrationModel).GetProperty(setting).SetValue(config, newValue);
+            }
+            catch(NullReferenceException)
+            {
+                return false;
+            }
+            
 
             if(File.Exists(PathManager.ConfigurationPath))
             {
@@ -25,6 +35,8 @@ namespace spectabis_cmd.Domain
                 serial.Formatting = Formatting.Indented;
                 serial.Serialize(writer, config);
             }
+
+            return true;
         }
 
         public static string Get(string setting)
