@@ -9,7 +9,7 @@ namespace spectabis_cmd.Domain
 {
     public static class ConfigurationManager
     {
-        public static void Set(string setting, dynamic newValue)
+        public static void Set<T> (string setting, T newValue)
         {
             ConfigrationModel config = GetConfig();
             typeof(ConfigrationModel).GetProperty(setting).SetValue(config, newValue);
@@ -40,7 +40,7 @@ namespace spectabis_cmd.Domain
                 return null;
             }
         }
-
+        
         public static Dictionary<string, string> GetAllConfiguration()
         {
             Dictionary<string, string> dict = new Dictionary<string, string>();
@@ -65,7 +65,8 @@ namespace spectabis_cmd.Domain
     public class ConfigrationModel
     {
         public string EmulatorExectuablePath {get; set;} = "null";
-        public string EmulatorConfigsPath {get; set;} = "null";
-        public string PCSX2GameDatabasePath {get; set;} = "null";
+        public string GameDatabaseFilePath {get; set;} = "null";
+        public string ConfigsPath {get; set;} = "null";
+        public string PluginsPath {get; set;} = "null";
     }
 }
