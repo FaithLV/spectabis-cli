@@ -64,8 +64,8 @@ namespace spectabis_cmd.Domain
 
     public class ConfigrationModel
     {
-        public string PCSX2 {get; set;} = "null";
-        public string DefaultConfigs {get; set;} = "null";
-        public string GameDatabasePath {get; set;} = "null";
+        public string EmulatorExectuablePath {get; set;} = "null";
+        public string EmulatorConfigsPath {get; set;} = "null";
+        public string PCSX2GameDatabasePath {get; set;} = "null";
     }
 }
