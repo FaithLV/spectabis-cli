@@ -98,6 +98,9 @@ namespace spectabis_cmd.Domain
             }
             else switch (args[0].ToLower())
             {
+                case "set" when args.Length < 3:
+                    System.Console.WriteLine("  spectabis: must specify value to set");
+                    return;
                 case "set":
                     if(ConfigurationManager.Set(args[1], args[2]))
                     {
