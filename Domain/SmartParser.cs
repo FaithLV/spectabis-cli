@@ -108,7 +108,7 @@ namespace spectabis_cmd.Domain
                     }
                     else
                     {
-                        System.Console.WriteLine("configuration key not found (hint: they are case sensitive)");    
+                        System.Console.WriteLine("  spectabis: key not found (hint: they are case sensitive)");    
                     }
                     break;
                 case "get" when args.Length < 2:
