@@ -77,5 +77,20 @@ namespace spectabis_cmd.Domain
                 //System.Console.WriteLine("{0,10} = {1,10}", prop.Key, prop.Value);
             }
         }
+
+        private static readonly string PrintPrefix = " spectabis: ";
+
+        //Print easy to read one-line messages.
+        //Should only be used for command state messages.
+        public static void Print<T> (T message)
+        {
+            System.Console.ForegroundColor = ConsoleColor.Gray;
+            System.Console.Write($"{PrintPrefix}");
+
+            Console.ForegroundColor = ConsoleColor.White;
+            System.Console.WriteLine($"{message.ToString()}");
+
+            Console.ResetColor();
+        }
     }
 }

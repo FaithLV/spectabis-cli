@@ -72,7 +72,7 @@ namespace spectabis_cmd.Domain
 
             if(!isTitle && !isProfileID)
             {
-                System.Console.WriteLine("  spectabis: profile not found by id or title");
+                PrettyPrinter.Print("profile not found by id or title");
                 return;
             }
 
@@ -94,25 +94,25 @@ namespace spectabis_cmd.Domain
         {
             if(args.Length < 1 || args[0] == null)
             {
-                System.Console.WriteLine("  spectabis: must specify get/set action");
+                PrettyPrinter.Print("must specify get/set action");
             }
             else switch (args[0].ToLower())
             {
                 case "set" when args.Length < 3:
-                    System.Console.WriteLine("  spectabis: must specify value to set");
+                    PrettyPrinter.Print("spectabis: must specify value to set");
                     return;
                 case "set":
                     if(ConfigurationManager.Set(args[1], args[2]))
                     {
-                        System.Console.WriteLine($"  spectabis: {args[1]} = {args[2]}");
+                        PrettyPrinter.Print($"{args[1]} = {args[2]}");
                     }
                     else
                     {
-                        System.Console.WriteLine("  spectabis: key not found (hint: they are case sensitive)");    
+                        PrettyPrinter.Print("key not found (hint: they are case sensitive)");    
                     }
                     break;
                 case "get" when args.Length < 2:
-                    System.Console.WriteLine("  spectabis: must specify (case-sensitive) property name");
+                    PrettyPrinter.Print("must specify (case-sensitive) property name");
                     return;
                 case "get":
                 {
@@ -125,15 +125,15 @@ namespace spectabis_cmd.Domain
                     }
                     else if(args[1] == null || value == null)
                     {
-                        System.Console.WriteLine("  spectabis: must specify proper property name (case-sensitive)");
+                        PrettyPrinter.Print("must specify proper property name (case-sensitive)");
                         return;
                     }
                 
-                    System.Console.WriteLine("  {0,10} = {1, 10}", args[1], value);
+                    PrettyPrinter.Print($"{args[1]} = {value}");
                     break;
                 }
                 default:
-                    System.Console.WriteLine($"  spectabis: no such action {args[0]}");
+                    PrettyPrinter.Print($"no such action {args[0]}");
                     break;
             }
         }
@@ -141,7 +141,7 @@ namespace spectabis_cmd.Domain
         private static void PrintConfiguration(string setting)
         {
             if (setting != null) return;
-            System.Console.WriteLine("  spectabis: must specify setting");
+            PrettyPrinter.Print("must specify setting");
             return;
         }
     }

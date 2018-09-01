@@ -53,7 +53,7 @@ namespace spectabis_cmd
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 System.Console.WriteLine();
-                System.Console.WriteLine($" Unknown command '{commandArg}'!");
+                PrettyPrinter.Print($"Unknown command '{commandArg}'!");
                 Console.ForegroundColor = ConsoleColor.White;
                 Help();
             }
@@ -81,7 +81,7 @@ namespace spectabis_cmd
                 }
                 catch (KeyNotFoundException)
                 {
-                    System.Console.WriteLine($" spectabis: '{commandArg}' command not found");
+                    PrettyPrinter.Print($"'{commandArg}' command not found");
                 }
             }
         }
@@ -112,7 +112,7 @@ namespace spectabis_cmd
                 }
                 else
                 {
-                    System.Console.WriteLine("  spectabis: missing profile name or game path");
+                    PrettyPrinter.Print("missing profile name or game path");
                     return;
                 }
             }
