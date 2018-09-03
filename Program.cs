@@ -63,11 +63,8 @@ namespace spectabis_cmd
         {
             while (true)
             {
-                System.Console.ForegroundColor = ConsoleColor.Gray;
-                System.Console.Write("spectabis > ");
-                System.Console.ForegroundColor = ConsoleColor.White;
-
-                string[] args = System.Console.ReadLine().ParseAsArguments().ToArray();
+                string input = ReadLine.Read("spectabis > ");
+                string[] args = input.ParseAsArguments().ToArray();
 
                 Console.WriteLine(String.Empty);
 
