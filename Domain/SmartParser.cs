@@ -113,6 +113,7 @@ namespace spectabis_cmd.Domain
                     break;
                 case "get" when args.Length < 2:
                     PrettyPrinter.Print("must specify (case-sensitive) property name");
+                    PrettyPrinter.Print("you can use `*` wilcard to see all options");
                     return;
                 case "get":
                 {
