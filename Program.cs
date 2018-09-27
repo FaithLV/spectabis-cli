@@ -19,7 +19,7 @@ namespace spectabis_cmd
             {"help", new ConsoleCommand(Help, "Show help message")},
             {"create", new ConsoleCommand(Create, "Create a new game profile", "create < path / name > [optional]<name>")},
             {"profiles", new ConsoleCommand(Profiles, "Show all game profiles or single by ID or exact name", "profiles [optional]<ID/Title>")},
-            {"config", new ConsoleCommand(Configure, "Set or Get Spectabis global configuration settings", "configure [get/set] <Setting> <value>")},
+            {"options", new ConsoleCommand(Options, "Access to spectabis settings", "configure [get/set] <Setting> <value>")},
             { "exit", new ConsoleCommand(Exit, "Exit spectabis interactive shell")}
         };
 
@@ -145,7 +145,7 @@ namespace spectabis_cmd
             
         }
 
-        static void Configure(string[] args)
+        static void Options(string[] args)
         {
             SmartParser.Configuration(args);
         }
