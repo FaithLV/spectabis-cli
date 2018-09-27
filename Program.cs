@@ -27,6 +27,7 @@ namespace spectabis_cmd
         {
             if (args.Length < 1)
             {
+                PrettyPrinter.Print("Use `help` to list all available commands");
                 IsInteractive = true;
                 LaunchInteractive();
             }
