@@ -4,8 +4,8 @@ using System.IO;
 using System.Linq;
 using McMaster.Extensions.CommandLineUtils;
 using Newtonsoft.Json;
-using spectabis_cli.Model;
 using spectabis_cli.Domain;
+using spectabis_cli.Model;
 
 namespace spectabis_cli
 {
@@ -14,14 +14,14 @@ namespace spectabis_cli
         public static bool IsInteractive { get; private set; }
 
         public static readonly Dictionary<string, ConsoleCommand> CommandTable = new Dictionary<string, ConsoleCommand>()
-        {
-            {"version", new ConsoleCommand(Version, "Show program version")},
-            {"help", new ConsoleCommand(Help, "Show help message")},
-            {"create", new ConsoleCommand(Create, "Create a new game profile", "create < path / name > [optional]<name>")},
-            {"delete", new ConsoleCommand(Delete, "Delete game profile", "delete < id / title >")},
-            {"profiles", new ConsoleCommand(Profiles, "Show all game profiles or single by ID or exact name", "profiles [optional]<ID/Title>")},
-            {"options", new ConsoleCommand(Options, "Access to spectabis settings", "configure [get/set] <Setting> <value>")},
-            { "exit", new ConsoleCommand(Exit, "Exit spectabis interactive shell")}
+        { 
+        { "version", new ConsoleCommand(Version, "Show program version") }, 
+        { "help", new ConsoleCommand(Help, "Show help message") }, 
+        { "create", new ConsoleCommand(Create, "Create a new game profile", "create < path / name > [optional]<name>") }, 
+        { "delete", new ConsoleCommand(Delete, "Delete game profile", "delete < id / title >") }, 
+        { "profiles", new ConsoleCommand(Profiles, "Show all game profiles or single by ID or exact name", "profiles [optional]<ID/Title>") },
+        { "options", new ConsoleCommand(Options, "Access to spectabis settings", "configure [get/set] <Setting> <value>") }, 
+        { "exit", new ConsoleCommand(Exit, "Exit spectabis interactive shell") }
         };
 
         static void Main(string[] args)
@@ -31,7 +31,7 @@ namespace spectabis_cli
                 PrettyPrinter.Print("Use `help` to list all available commands");
                 IsInteractive = true;
                 LaunchInteractive();
-            }
+            }        
             else
             {
                 IsInteractive = false;
@@ -71,19 +71,22 @@ namespace spectabis_cli
                 string input = ReadLine.Read("spectabis > ");
                 string[] args = input.ParseAsArguments().ToArray();
 
-                Console.WriteLine(String.Empty);
-
-                string commandArg = args[0].ToLower();
-                string[] arguments = args.Where(x => x != args[0]).ToArray();
-
-                try
+                if (!string.IsNullOrEmpty(input) && !string.IsNullOrWhiteSpace(input) && args.Count() != 0)
                 {
-                    ConsoleCommand command = CommandTable[commandArg];
-                    command.CommandDelegate(arguments);
-                }
-                catch (KeyNotFoundException)
-                {
-                    PrettyPrinter.Print($"'{commandArg}' command not found");
+                    Console.WriteLine(String.Empty);
+
+                    string commandArg = args[0].ToLower();
+                    string[] arguments = args.Where(x => x != args[0]).ToArray();
+
+                    try
+                    {
+                        ConsoleCommand command = CommandTable[commandArg];
+                        command.CommandDelegate(arguments);
+                    }
+                    catch (KeyNotFoundException)
+                    {
+                        PrettyPrinter.Print($"'{commandArg}' command not found");
+                    }
                 }
             }
         }
@@ -124,7 +127,7 @@ namespace spectabis_cli
 
         static void Edit(string[] args)
         {
-            
+
         }
 
         static void Profiles(string[] args = null)
@@ -146,7 +149,7 @@ namespace spectabis_cli
 
         static void Launch(string[] args)
         {
-            
+
         }
 
         static void Options(string[] args)
