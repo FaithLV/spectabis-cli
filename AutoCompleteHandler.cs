@@ -26,18 +26,26 @@ namespace spectabis_cli
             }
 
             //Profile hints
-            if(text.StartsWith("profiles "))
+            if(arguments[0] == "profiles" || arguments[0] == "delete")
             {
-                string query = text.Replace("profiles ", String.Empty).ToLower();
+                if(newArgument)
+                {
+                    return QueryProfiles();
+                }
+
+                string query = arguments[1];
                 return QueryProfiles(query);
             }
 
-
-
             return null;
         }
-        private string[] QueryProfiles(string query)
+        private string[] QueryProfiles(string query = null)
         {
+            if(query == null)
+            {
+                query = String.Empty;
+            }
+
             var profiles = ProfileManager.GetAllProfiles().Where(x => x.ProfileID.ToLower().StartsWith(query));
             return profiles.Select(x => x.ProfileID).ToArray();
         }
