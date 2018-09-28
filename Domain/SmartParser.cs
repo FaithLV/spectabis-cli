@@ -70,8 +70,10 @@ namespace spectabis_cli.Domain
             if(profile == null)
             {
                 PrettyPrinter.Print("profile not found by id or title");
+                return;
             }
 
+            PrettyPrinter.Print($"Deleted profile ({profile.ProfileID} | {profile.ProfileName})");
             ProfileManager.DeleteProfile(profile);
         }
 

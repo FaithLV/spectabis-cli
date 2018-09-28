@@ -20,6 +20,26 @@ namespace spectabis_cli.Domain
 
             WriteAllProfiles(allProfiles);
         }
+
+
+        public static void DeleteProfile(GameProfile profile)
+        {
+            List<GameProfile> allProfiles = GetAllProfiles();
+
+            try
+            {
+                Directory.Delete($"{PathManager.ProfileDirectory}//{profile.ProfileID}");
+            }
+            catch(Exception e)
+            {
+                PrettyPrinter.Print("Something went wrong deleting profile configuration files.");
+                System.Console.WriteLine(e.Message);
+            }
+            
+
+            allProfiles.RemoveAll(x => x.ProfileID == profile.ProfileID);
+            WriteAllProfiles(allProfiles);
+        }
         
         public static void WriteAllProfiles(List<GameProfile> profiles)
         {   
@@ -68,11 +88,6 @@ namespace spectabis_cli.Domain
             }
 
             return profile;
-        }
-
-        public static void DeleteProfile(GameProfile profile)
-        {
-            // delete game profile
         }
     }
 }
