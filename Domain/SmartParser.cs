@@ -62,29 +62,27 @@ namespace spectabis_cli.Domain
             return profile;
         }
 
+        public static void DeleteGameProfile(string[] args)
+        {
+            string arg = args[0];
+            GameProfile profile = ProfileManager.FindProfile(arg);
+
+            if(profile == null)
+            {
+                PrettyPrinter.Print("profile not found by id or title");
+            }
+
+            ProfileManager.DeleteProfile(profile);
+        }
+
         public static void PrintProfile(string[] args)
         {
             string arg = args[0];
-            List<GameProfile> profiles = ProfileManager.GetAllProfiles();
+            GameProfile profile = ProfileManager.FindProfile(arg);
 
-            bool isProfileID = profiles.Any(x => x.ProfileID.ToLower() == arg.ToLower());
-            bool isTitle = profiles.Any(x => x.ProfileName.ToLower() == arg.ToLower());
-
-            if(!isTitle && !isProfileID)
+            if(profile == null)
             {
                 PrettyPrinter.Print("profile not found by id or title");
-                return;
-            }
-
-            GameProfile profile = null;
-
-            if(isProfileID)
-            {
-                profile = profiles.SingleOrDefault(x => x.ProfileID.ToLower() == arg.ToLower());
-            }
-            else
-            {
-                profile = profiles.SingleOrDefault(x => x.ProfileName.ToLower() == arg.ToLower());
             }
 
             PrettyPrinter.PrintGameProfile(profile);

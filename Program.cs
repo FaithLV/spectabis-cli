@@ -18,6 +18,7 @@ namespace spectabis_cli
             {"version", new ConsoleCommand(Version, "Show program version")},
             {"help", new ConsoleCommand(Help, "Show help message")},
             {"create", new ConsoleCommand(Create, "Create a new game profile", "create < path / name > [optional]<name>")},
+            {"delete", new ConsoleCommand(Delete, "Delete game profile", "delete < id / title >")},
             {"profiles", new ConsoleCommand(Profiles, "Show all game profiles or single by ID or exact name", "profiles [optional]<ID/Title>")},
             {"options", new ConsoleCommand(Options, "Access to spectabis settings", "configure [get/set] <Setting> <value>")},
             { "exit", new ConsoleCommand(Exit, "Exit spectabis interactive shell")}
@@ -137,7 +138,7 @@ namespace spectabis_cli
 
         static void Delete(string[] args)
         {
-
+            SmartParser.DeleteGameProfile(args);
         }
 
         static void Launch(string[] args)
