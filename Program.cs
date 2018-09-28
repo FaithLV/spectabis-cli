@@ -63,6 +63,8 @@ namespace spectabis_cli
 
         static void LaunchInteractive()
         {
+            ReadLine.HistoryEnabled = true;
+
             while (true)
             {
                 string input = ReadLine.Read("spectabis > ");
