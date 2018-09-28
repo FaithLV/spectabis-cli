@@ -138,12 +138,5 @@ namespace spectabis_cli.Domain
                     break;
             }
         }
-
-        private static void PrintConfiguration(string setting)
-        {
-            if (setting != null) return;
-            PrettyPrinter.Print("must specify setting");
-            return;
-        }
     }
 }
