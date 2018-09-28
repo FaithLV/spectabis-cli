@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
-using spectabis_cmd.Model;
+using spectabis_cli.Model;
 
-namespace spectabis_cmd.Domain
+namespace spectabis_cli.Domain
 {
     public static class ProfileManager
     {

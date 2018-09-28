@@ -5,7 +5,7 @@
     <OutputType>Exe</OutputType>
     <Version>1.0.0-dev</Version>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <RootNamespace>spectabis_cmd</RootNamespace>
+    <RootNamespace>spectabis_cli</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

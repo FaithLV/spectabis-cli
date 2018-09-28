@@ -1,8 +1,8 @@
 using System;
 using System.Text;
-using spectabis_cmd.Domain;
+using spectabis_cli.Domain;
 
-namespace spectabis_cmd.Model
+namespace spectabis_cli.Model
 {
     public class GameProfile
     {

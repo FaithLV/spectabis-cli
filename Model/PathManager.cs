@@ -1,6 +1,6 @@
 using System;
 
-namespace spectabis_cmd.Model
+namespace spectabis_cli.Model
 {
     public static class PathManager
     {

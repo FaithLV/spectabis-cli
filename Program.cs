@@ -4,10 +4,10 @@ using System.IO;
 using System.Linq;
 using McMaster.Extensions.CommandLineUtils;
 using Newtonsoft.Json;
-using spectabis_cmd.Model;
-using spectabis_cmd.Domain;
+using spectabis_cli.Model;
+using spectabis_cli.Domain;
 
-namespace spectabis_cmd
+namespace spectabis_cli
 {
     class Program
     {

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace spectabis_cmd.Domain
+namespace spectabis_cli.Domain
 {
     public class CRC32
     {
