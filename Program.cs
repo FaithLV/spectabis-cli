@@ -13,7 +13,7 @@ namespace spectabis_cli
     {
         public static bool IsInteractive { get; private set; }
 
-        private static readonly Dictionary<string, ConsoleCommand> CommandTable = new Dictionary<string, ConsoleCommand>()
+        public static readonly Dictionary<string, ConsoleCommand> CommandTable = new Dictionary<string, ConsoleCommand>()
         {
             {"version", new ConsoleCommand(Version, "Show program version")},
             {"help", new ConsoleCommand(Help, "Show help message")},
@@ -64,6 +64,7 @@ namespace spectabis_cli
         static void LaunchInteractive()
         {
             ReadLine.HistoryEnabled = true;
+            ReadLine.AutoCompletionHandler = new AutoCompletionHandler();
 
             while (true)
             {
