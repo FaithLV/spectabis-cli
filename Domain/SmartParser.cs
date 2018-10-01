@@ -39,7 +39,7 @@ namespace spectabis_cli.Domain
                 yield return sb.ToString();
         }
 
-        public static GameProfile CreateGameProfile(string[] args)
+        public static void CreateGameProfile(string[] args)
         {
             bool isFilePath = File.Exists(args[0]);
             GameProfile profile = null;
@@ -59,7 +59,8 @@ namespace spectabis_cli.Domain
             }
 
             profile.ProfileID = profile.GenerateHash();
-            return profile;
+            
+            ProfileManager.CreateProfile(profile);
         }
 
         public static void DeleteGameProfile(string[] args)

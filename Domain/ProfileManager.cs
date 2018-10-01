@@ -10,10 +10,10 @@ namespace spectabis_cli.Domain
     public static class ProfileManager
     {
 
-        public static void CreateProfile(string[] args)
+        public static void CreateProfile(GameProfile profile)
         {
             List<GameProfile> allProfiles = GetAllProfiles();
-            GameProfile game = SmartParser.CreateGameProfile(args);
+            GameProfile game = profile;
             allProfiles.Add(game);
 
             Directory.CreateDirectory($"{PathManager.ProfileDirectory}//{game.ProfileID}");

@@ -104,25 +104,9 @@ namespace spectabis_cli
         }
 
         //Create game profile
-        static void Create(string[] args = null)
+        static void Create(string[] args)
         {
-            if (args == null)
-            {
-                if (IsInteractive)
-                {
-                    args = new string[2];
-
-                    string arg1 = Prompt.GetString("Enter game file path or title: ");
-                    args[0] = arg1;
-                }
-                else
-                {
-                    PrettyPrinter.Print("missing profile name or game path");
-                    return;
-                }
-            }
-
-            ProfileManager.CreateProfile(args);
+            SmartParser.CreateGameProfile(args);
         }
 
         static void Edit(string[] args)
