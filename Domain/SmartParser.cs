@@ -52,6 +52,8 @@ namespace spectabis_cli.Domain
 
             if (isFilePath)
             {
+                
+
                 profile = new GameProfile() { GamePath = args[0] };
 
                 if (args.Length > 1)
@@ -61,6 +63,12 @@ namespace spectabis_cli.Domain
             }
             else
             {
+                if(ProfileManager.FindProfile(args[0]) != null)
+                {
+                    PrettyPrinter.Print("duplicate profile title, not created");
+                    return;
+                }
+
                 profile = new GameProfile() { ProfileName = args[0] };
             }
 
