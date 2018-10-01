@@ -41,6 +41,12 @@ namespace spectabis_cli.Domain
 
         public static void CreateGameProfile(string[] args)
         {
+            if(args.Count() < 1)
+            {
+                PrettyPrinter.Print("enter valid game profile title or file path");
+                return;
+            }
+
             bool isFilePath = File.Exists(args[0]);
             GameProfile profile = null;
 
@@ -59,7 +65,7 @@ namespace spectabis_cli.Domain
             }
 
             profile.ProfileID = profile.GenerateHash();
-            
+
             ProfileManager.CreateProfile(profile);
         }
 
