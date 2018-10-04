@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -91,6 +92,17 @@ namespace spectabis_cli.Domain
             if(profile == null)
             {
                 PrettyPrinter.Print("profile not found by id or title");
+                return;
+            }
+
+            PrettyPrinter.Print($"are you sure you want to delete? '{profile.ProfileName}' | {profile.ProfileID}");
+            Console.Write("y / n > ");
+            ConsoleKeyInfo input = Console.ReadKey();
+            System.Console.WriteLine();
+            
+            if(input.Key.ToString() != "Y")
+            {
+                PrettyPrinter.Print("deletion terminated");
                 return;
             }
 
