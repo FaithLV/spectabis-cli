@@ -62,10 +62,15 @@ namespace spectabis_cli.Domain
             }
             else
             {
-                if(ProfileManager.FindProfile(args[0]) != null)
+                GameProfile duplicateTest = ProfileManager.FindProfile(args[0]);
+
+                if(duplicateTest != null)
                 {
-                    PrettyPrinter.Print("duplicate profile title, not created");
-                    return;
+                    if(duplicateTest.ProfileName.ToLower().Equals(args[0].ToLower()))
+                    {
+                        PrettyPrinter.Print("duplicate profile title, not created");
+                        return;
+                    }
                 }
 
                 profile = new GameProfile() { ProfileName = args[0] };
