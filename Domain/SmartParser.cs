@@ -159,5 +159,26 @@ namespace spectabis_cli.Domain
                     break;
             }
         }
+
+        public static void LaunchGame(string[] args)
+        {
+            if(args.Count() < 1)
+            {
+                PrettyPrinter.Print("specify game id or title to launch");
+                return;
+            }
+
+            string query = args[0];
+            GameProfile game = ProfileManager.FindProfile(query);
+
+            if(game == null)
+            {
+                PrettyPrinter.Print($"'{query}' profile not found");
+                return;
+            }
+
+            PrettyPrinter.Print($"Launching: '{game.ProfileName}' | '{game.ProfileID}'");
+
+        }
     }
 }

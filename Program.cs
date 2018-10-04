@@ -15,6 +15,7 @@ namespace spectabis_cli
 
         public static readonly Dictionary<string, ConsoleCommand> CommandTable = new Dictionary<string, ConsoleCommand>()
         { 
+        { "launch", new ConsoleCommand(Launch, "Launch emulator") }, 
         { "version", new ConsoleCommand(Version, "Show program version") }, 
         { "help", new ConsoleCommand(Help, "Show help message") }, 
         { "create", new ConsoleCommand(Create, "Create a new game profile", "create < path / name > [optional]<name>") }, 
@@ -133,7 +134,7 @@ namespace spectabis_cli
 
         static void Launch(string[] args)
         {
-
+            SmartParser.LaunchGame(args);
         }
 
         static void Options(string[] args)

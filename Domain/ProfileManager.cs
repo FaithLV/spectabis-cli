@@ -84,7 +84,7 @@ namespace spectabis_cli.Domain
             }
             else
             {
-                profile = profiles.SingleOrDefault(x => x.ProfileName.ToLower().Contains(query.ToLower()));
+                profile = profiles.FirstOrDefault(x => x.ProfileName.ToLower().Contains(query.ToLower()));
             }
 
             return profile;
