@@ -69,7 +69,7 @@ namespace spectabis_cli.Domain
             List<GameProfile> profiles = GetAllProfiles();
 
             bool isProfileID = profiles.Any(x => x.ProfileID.ToLower() == query.ToLower());
-            bool isTitle = profiles.Any(x => x.ProfileName.ToLower() == query.ToLower());
+            bool isTitle = profiles.Any(x => x.ProfileName.ToLower().Contains(query.ToLower()));
 
             if(!isTitle && !isProfileID)
             {
@@ -84,7 +84,7 @@ namespace spectabis_cli.Domain
             }
             else
             {
-                profile = profiles.SingleOrDefault(x => x.ProfileName.ToLower() == query.ToLower());
+                profile = profiles.SingleOrDefault(x => x.ProfileName.ToLower().Contains(query.ToLower()));
             }
 
             return profile;
