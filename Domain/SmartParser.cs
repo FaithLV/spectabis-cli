@@ -76,16 +76,7 @@ namespace spectabis_cli.Domain
                 profile = new GameProfile() { ProfileName = args[0] };
             }
 
-            string idbuffer;
-
-            //Generate against for hash collisions
-            do
-            {
-                idbuffer = profile.GenerateHash();
-            }
-            while(ProfileManager.FindProfile(idbuffer) != null);
-
-            profile.ProfileID = idbuffer;
+            profile.GenerateID();
             ProfileManager.CreateProfile(profile);
         }
 

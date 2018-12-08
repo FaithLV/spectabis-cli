@@ -21,15 +21,9 @@ namespace spectabis_cli.Model
         public string DEV9_Plugin {get; set;}
         public GameProfile() { }
 
-        public string GenerateHash()
+        public void GenerateID()
         {
-            string hash = string.Empty;
-            var Hasher = new CRC32();
-            
-            byte[] dataBuffer = Encoding.UTF8.GetBytes($"{ProfileName}{GamePath}{GameSerial}{DateTime.Now}"); 
-            string hashBuffer = Hasher.Get(dataBuffer).ToString("X2");
-            
-            return hashBuffer;
+            ProfileID = IdGenerator.Instance.Generate;
         }
     }
 }
